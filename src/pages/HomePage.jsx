@@ -9,14 +9,13 @@ import womenImage from "../assets/media bg-cover-4.png";
 import accessoriesImage from "../assets/media bg-cover-2.png";
 import kidsImage from "../assets/media bg-cover.png";
 
-// Produktbilder – Reihenfolge wie in deinem Figma
-import product1 from "../assets/product-cover-5-7.png";
-import product2 from "../assets/product-cover-5-6.png";
-import product3 from "../assets/product-cover-5-5.png";
+import product1 from "../assets/product-cover-5.png";
+import product2 from "../assets/product-cover-5-2.png";
+import product3 from "../assets/product-cover-5-3.png";
 import product4 from "../assets/product-cover-5-4.png";
-import product5 from "../assets/product-cover-5-3.png";
-import product6 from "../assets/product-cover-5-2.png";
-import product7 from "../assets/product-cover-5.png";
+import product5 from "../assets/product-cover-5-5.png";
+import product6 from "../assets/product-cover-5-6.png";
+import product7 from "../assets/product-cover-5-7.png";
 
 function HomePage() {
   const categories = [
@@ -27,20 +26,20 @@ function HomePage() {
   ];
 
   const products = [
-    { image: product1, title: "Graphic Design" },
-    { image: product2, title: "Graphic Design" },
-    { image: product3, title: "Graphic Design" },
-    { image: product4, title: "Graphic Design" },
-    { image: product5, title: "Graphic Design" },
-    { image: product6, title: "Graphic Design" },
-    { image: product7, title: "Graphic Design" },
+    product1,
+    product2,
+    product3,
+    product4,
+    product5,
+    product6,
+    product7,
   ];
 
   return (
     <div className="flex w-full flex-col bg-white">
 
       {/* HERO */}
-      <section className="relative flex h-[401px] flex-col items-center justify-center overflow-hidden bg-[#23856D] px-8 text-center">
+      <section className="relative flex h-[390px] w-full flex-col items-center justify-center overflow-hidden bg-[#23856D] px-8 text-center">
 
         <img
           src={heroImage}
@@ -80,6 +79,7 @@ function HomePage() {
         >
           <ChevronRight size={36} color="#FFFFFF" strokeWidth={2} />
         </button>
+
       </section>
 
       {/* EDITOR'S PICK */}
@@ -89,7 +89,7 @@ function HomePage() {
           EDITOR'S PICK
         </h2>
 
-        <p className="text-sm text-[#737373]">
+        <p className="text-center text-sm text-[#737373]">
           Problems trying to resolve the conflict between
         </p>
 
@@ -113,6 +113,7 @@ function HomePage() {
             </div>
           ))}
         </div>
+
       </section>
 
       {/* BESTSELLER PRODUCTS */}
@@ -130,18 +131,19 @@ function HomePage() {
           Problems trying to resolve the conflict between
         </p>
 
-        <div className="flex w-full flex-col gap-8">
-          {products.map((product, index) => (
+        <div className="flex w-full flex-col gap-6">
+          {products.map((image, index) => (
             <ProductCard
               key={index}
-              image={product.image}
-              title={product.title}
+              image={image}
+              title="Graphic Design"
               category="English Department"
               oldPrice="$16.48"
               price="$6.48"
             />
           ))}
         </div>
+
       </section>
 
     </div>
