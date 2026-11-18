@@ -1,14 +1,9 @@
 
-import { Switch, Route } from "react-router-dom";
-import HomePage from "../pages/HomePage";
-
 function PageContent() {
   return (
-    <main>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-      </Switch>
-    </main>
+    <div className="bg-red-500 p-10 text-center text-2xl font-bold text-white">
+      TEST PAGE CONTENT WORKS
+    </div>
   );
 }
 
