@@ -6,6 +6,16 @@ import womenImage from "../assets/media bg-cover-4.png";
 import accessoriesImage from "../assets/media bg-cover-2.png";
 import kidsImage from "../assets/media bg-cover.png";
 
+import product1 from "../assets/product-cover-5-7.png";
+import product2 from "../assets/product-cover-5-6.png";
+import product3 from "../assets/product-cover-5-5.png";
+import product4 from "../assets/product-cover-5-4.png";
+import product5 from "../assets/product-cover-5-3.png";
+import product6 from "../assets/product-cover-5-2.png";
+import product7 from "../assets/product-cover-5.png";
+
+import ProductCard from "../components/ProductCard";
+
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 function HomePage() {
@@ -32,6 +42,16 @@ function HomePage() {
     },
   ];
 
+  const products = [
+    product1,
+    product2,
+    product3,
+    product4,
+    product5,
+    product6,
+    product7,
+  ];
+
   return (
     <main className="mx-auto flex w-full max-w-[414px] flex-col bg-white">
 
@@ -44,7 +64,6 @@ function HomePage() {
           backgroundPosition: "center",
         }}
       >
-        {/* Previous Arrow */}
         <button
           type="button"
           aria-label="Previous slide"
@@ -53,7 +72,6 @@ function HomePage() {
           <ChevronLeft size={28} strokeWidth={2} />
         </button>
 
-        {/* Next Arrow */}
         <button
           type="button"
           aria-label="Next slide"
@@ -62,7 +80,6 @@ function HomePage() {
           <ChevronRight size={28} strokeWidth={2} />
         </button>
 
-        {/* Hero Text */}
         <div className="flex w-full max-w-[291px] flex-col items-center text-center">
 
           <p className="mb-6 text-xs font-bold leading-6 text-white">
@@ -92,7 +109,6 @@ function HomePage() {
       {/* EDITOR'S PICK */}
       <section className="flex w-full flex-col items-center bg-[#FAFAFA] px-0 py-12">
 
-        {/* Heading */}
         <div className="mb-8 flex flex-col items-center text-center">
 
           <h2 className="mb-2 text-base font-bold leading-6 text-[#252B42]">
@@ -105,8 +121,6 @@ function HomePage() {
 
         </div>
 
-
-        {/* Fashion Cards */}
         <div className="flex w-full flex-col items-center gap-4">
 
           {fashionCards.map((card) => (
@@ -121,7 +135,6 @@ function HomePage() {
                 className="h-full w-full object-cover"
               />
 
-              {/* Category Label */}
               <div className="absolute bottom-4 left-4 flex h-10 min-w-[80px] items-center justify-center bg-white px-4">
 
                 <span className="text-[10px] font-bold leading-4 text-[#252B42]">
@@ -134,6 +147,43 @@ function HomePage() {
           ))}
 
         </div>
+      </section>
+
+
+      {/* BESTSELLER PRODUCTS */}
+      <section className="flex w-full flex-col items-center gap-8 bg-white px-6 py-12">
+
+        <div className="flex flex-col items-center text-center">
+
+          <p className="mb-2 text-sm font-bold text-[#737373]">
+            Featured Products
+          </p>
+
+          <h2 className="mb-2 text-2xl font-bold text-[#252B42]">
+            BESTSELLER PRODUCTS
+          </h2>
+
+          <p className="max-w-[240px] text-sm text-[#737373]">
+            Problems trying to resolve the conflict between
+          </p>
+
+        </div>
+
+        <div className="flex w-full flex-col gap-8">
+
+          {products.map((product, index) => (
+            <ProductCard
+              key={index}
+              image={product}
+              title="Graphic Design"
+              category="English Department"
+              oldPrice="$16.48"
+              price="$6.48"
+            />
+          ))}
+
+        </div>
+
       </section>
 
     </main>
