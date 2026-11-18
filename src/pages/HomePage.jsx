@@ -4,7 +4,7 @@ import ProductCard from "../components/ProductCard";
 
 // Hero assets
 import heroBackground from "../assets/product-slide-1-2.jpg";
-import heroModel from "../assets/#png-cover.2.png";
+import heroModel from "../assets/png-cover.2.png";
 
 // Editor's Pick
 import menImage from "../assets/media bg-cover-3.png";
