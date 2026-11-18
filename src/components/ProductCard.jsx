@@ -1,11 +1,5 @@
 
-function ProductCard({
-  image,
-  title,
-  category,
-  oldPrice,
-  price,
-}) {
+function ProductCard({ image, title, category, oldPrice, price }) {
   return (
     <article className="flex w-full flex-col items-center bg-white">
       <img
@@ -14,7 +8,7 @@ function ProductCard({
         className="h-[300px] w-full object-cover"
       />
 
-      <div className="flex w-full flex-col items-center gap-2 px-4 py-6">
+      <div className="flex w-full flex-col items-center gap-2 px-4 py-6 text-center">
         <h3 className="text-base font-bold text-[#252B42]">
           {title}
         </h3>

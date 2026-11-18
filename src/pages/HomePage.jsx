@@ -81,7 +81,6 @@ function HomePage() {
         </button>
 
         <div className="flex w-full max-w-[291px] flex-col items-center text-center">
-
           <p className="mb-6 text-xs font-bold leading-6 text-white">
             SUMMER 2020
           </p>
@@ -101,16 +100,13 @@ function HomePage() {
           >
             SHOP NOW
           </button>
-
         </div>
       </section>
-
 
       {/* EDITOR'S PICK */}
       <section className="flex w-full flex-col items-center bg-[#FAFAFA] px-0 py-12">
 
         <div className="mb-8 flex flex-col items-center text-center">
-
           <h2 className="mb-2 text-base font-bold leading-6 text-[#252B42]">
             EDITOR'S PICK
           </h2>
@@ -118,17 +114,14 @@ function HomePage() {
           <p className="max-w-[196px] text-xs font-normal leading-4 text-[#737373]">
             Problems trying to resolve the conflict between
           </p>
-
         </div>
 
         <div className="flex w-full flex-col items-center gap-4">
-
           {fashionCards.map((card) => (
             <div
               key={card.title}
               className={`relative flex w-full max-w-[323px] overflow-hidden ${card.height}`}
             >
-
               <img
                 src={card.image}
                 alt={`${card.title} fashion collection`}
@@ -136,25 +129,19 @@ function HomePage() {
               />
 
               <div className="absolute bottom-4 left-4 flex h-10 min-w-[80px] items-center justify-center bg-white px-4">
-
                 <span className="text-[10px] font-bold leading-4 text-[#252B42]">
                   {card.title}
                 </span>
-
               </div>
-
             </div>
           ))}
-
         </div>
       </section>
-
 
       {/* BESTSELLER PRODUCTS */}
       <section className="flex w-full flex-col items-center gap-8 bg-white px-6 py-12">
 
         <div className="flex flex-col items-center text-center">
-
           <p className="mb-2 text-sm font-bold text-[#737373]">
             Featured Products
           </p>
@@ -166,11 +153,9 @@ function HomePage() {
           <p className="max-w-[240px] text-sm text-[#737373]">
             Problems trying to resolve the conflict between
           </p>
-
         </div>
 
         <div className="flex w-full flex-col gap-8">
-
           {products.map((product, index) => (
             <ProductCard
               key={index}
@@ -181,7 +166,6 @@ function HomePage() {
               price="$6.48"
             />
           ))}
-
         </div>
 
       </section>
