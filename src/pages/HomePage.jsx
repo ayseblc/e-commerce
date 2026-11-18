@@ -1,4 +1,5 @@
 
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import ProductCard from "../components/ProductCard";
 
 import heroImage from "../assets/product-slide-1.jpg";
@@ -8,6 +9,7 @@ import womenImage from "../assets/media bg-cover-4.png";
 import accessoriesImage from "../assets/media bg-cover-2.png";
 import kidsImage from "../assets/media bg-cover.png";
 
+// Produktbilder – Reihenfolge wie in deinem Figma
 import product1 from "../assets/product-cover-5-7.png";
 import product2 from "../assets/product-cover-5-6.png";
 import product3 from "../assets/product-cover-5-5.png";
@@ -25,25 +27,33 @@ function HomePage() {
   ];
 
   const products = [
-    product1,
-    product2,
-    product3,
-    product4,
-    product5,
-    product6,
-    product7,
+    { image: product1, title: "Graphic Design" },
+    { image: product2, title: "Graphic Design" },
+    { image: product3, title: "Graphic Design" },
+    { image: product4, title: "Graphic Design" },
+    { image: product5, title: "Graphic Design" },
+    { image: product6, title: "Graphic Design" },
+    { image: product7, title: "Graphic Design" },
   ];
 
   return (
     <div className="flex w-full flex-col bg-white">
 
       {/* HERO */}
-      <section className="relative flex h-[401px] flex-col items-center justify-center overflow-hidden bg-[#23A6F0] px-8 text-center">
+      <section className="relative flex h-[401px] flex-col items-center justify-center overflow-hidden bg-[#23856D] px-8 text-center">
+
         <img
           src={heroImage}
           alt="Summer collection"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 z-0 h-full w-full object-cover"
         />
+
+        <button
+          aria-label="Previous slide"
+          className="absolute left-2 top-1/2 z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center"
+        >
+          <ChevronLeft size={36} color="#FFFFFF" strokeWidth={2} />
+        </button>
 
         <div className="relative z-10 flex flex-col items-center gap-5">
           <p className="text-sm font-bold text-white">
@@ -63,10 +73,18 @@ function HomePage() {
             SHOP NOW
           </button>
         </div>
+
+        <button
+          aria-label="Next slide"
+          className="absolute right-2 top-1/2 z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center"
+        >
+          <ChevronRight size={36} color="#FFFFFF" strokeWidth={2} />
+        </button>
       </section>
 
       {/* EDITOR'S PICK */}
       <section className="flex flex-col items-center gap-6 bg-[#FAFAFA] px-4 py-12">
+
         <h2 className="text-2xl font-bold text-[#252B42]">
           EDITOR'S PICK
         </h2>
@@ -99,6 +117,7 @@ function HomePage() {
 
       {/* BESTSELLER PRODUCTS */}
       <section className="flex flex-col items-center px-4 py-12">
+
         <p className="text-sm font-bold text-[#737373]">
           Featured Products
         </p>
@@ -112,11 +131,11 @@ function HomePage() {
         </p>
 
         <div className="flex w-full flex-col gap-8">
-          {products.map((image, index) => (
+          {products.map((product, index) => (
             <ProductCard
               key={index}
-              image={image}
-              title="Graphic Design"
+              image={product.image}
+              title={product.title}
               category="English Department"
               oldPrice="$16.48"
               price="$6.48"
