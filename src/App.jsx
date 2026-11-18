@@ -1,16 +1,14 @@
-
-import { BrowserRouter } from "react-router-dom";
 import Header from "./layout/Header";
 import PageContent from "./layout/PageContent";
+import Footer from "./layout/Footer";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div>
-        <Header />
-        <PageContent />
-      </div>
-    </BrowserRouter>
+    <div className="mx-auto w-full max-w-[414px]">
+      <Header />
+      <PageContent />
+      <Footer />
+    </div>
   );
 }
 

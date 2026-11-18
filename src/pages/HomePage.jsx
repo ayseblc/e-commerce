@@ -33,11 +33,11 @@ function HomePage() {
   ];
 
   return (
-    <main className="flex w-full flex-col">
+    <main className="mx-auto flex w-full max-w-[414px] flex-col bg-white">
 
       {/* HERO SECTION */}
       <section
-        className="relative flex min-h-[400px] w-full flex-col items-center justify-center px-6 text-center md:min-h-[705px]"
+        className="relative flex h-[401px] w-full flex-col items-center justify-center px-6 text-center"
         style={{
           backgroundImage: `url(${productSlide})`,
           backgroundSize: "cover",
@@ -48,39 +48,39 @@ function HomePage() {
         <button
           type="button"
           aria-label="Previous slide"
-          className="absolute left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center text-white md:left-4"
+          className="absolute left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center text-white"
         >
-          <ChevronLeft size={36} strokeWidth={2} />
+          <ChevronLeft size={28} strokeWidth={2} />
         </button>
 
         {/* Next Arrow */}
         <button
           type="button"
           aria-label="Next slide"
-          className="absolute right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center text-white md:right-4"
+          className="absolute right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center text-white"
         >
-          <ChevronRight size={36} strokeWidth={2} />
+          <ChevronRight size={28} strokeWidth={2} />
         </button>
 
-        {/* Hero Content */}
-        <div className="flex max-w-[600px] flex-col items-center text-center">
+        {/* Hero Text */}
+        <div className="flex w-full max-w-[291px] flex-col items-center text-center">
 
-          <p className="mb-6 text-xs font-bold leading-4 text-white md:text-base md:leading-6">
+          <p className="mb-6 text-xs font-bold leading-6 text-white">
             SUMMER 2020
           </p>
 
-          <h1 className="mb-6 text-[32px] font-bold leading-[40px] text-white md:text-[40px] md:leading-[50px]">
+          <h1 className="mb-6 max-w-[268px] text-[40px] font-bold leading-[50px] text-white">
             NEW COLLECTION
           </h1>
 
-          <p className="mb-6 max-w-[350px] text-sm font-normal leading-5 text-white md:max-w-none md:text-xl md:leading-[30px]">
+          <p className="mb-6 max-w-[291px] text-sm font-normal leading-5 text-white">
             We know how large objects will act,
             but things on a small scale.
           </p>
 
           <button
             type="button"
-            className="bg-[#2DC071] px-8 py-3 text-base font-bold leading-6 text-white md:px-8 md:py-3 md:text-2xl md:leading-8"
+            className="flex h-8 w-[141px] items-center justify-center bg-[#2DC071] text-base font-bold leading-6 text-white"
           >
             SHOP NOW
           </button>
@@ -89,10 +89,10 @@ function HomePage() {
       </section>
 
 
-      {/* EDITOR'S PICK SECTION */}
-      <section className="flex w-full flex-col items-center bg-[#FAFAFA] px-6 py-12 md:py-16">
+      {/* EDITOR'S PICK */}
+      <section className="flex w-full flex-col items-center bg-[#FAFAFA] px-0 py-12">
 
-        {/* Section Heading */}
+        {/* Heading */}
         <div className="mb-8 flex flex-col items-center text-center">
 
           <h2 className="mb-2 text-base font-bold leading-6 text-[#252B42]">
@@ -114,6 +114,7 @@ function HomePage() {
               key={card.title}
               className={`relative flex w-full max-w-[323px] overflow-hidden ${card.height}`}
             >
+
               <img
                 src={card.image}
                 alt={`${card.title} fashion collection`}
@@ -122,9 +123,11 @@ function HomePage() {
 
               {/* Category Label */}
               <div className="absolute bottom-4 left-4 flex h-10 min-w-[80px] items-center justify-center bg-white px-4">
+
                 <span className="text-[10px] font-bold leading-4 text-[#252B42]">
                   {card.title}
                 </span>
+
               </div>
 
             </div>
