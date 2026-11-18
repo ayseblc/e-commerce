@@ -25,12 +25,14 @@ function HomePage() {
     { title: "KIDS", image: kidsImage, height: "h-[242px]" },
   ];
 
+  // Produktreihenfolge wie in deinem Figma
   const products = [
     product1,
     product2,
     product3,
     product4,
     product5,
+    product6,
     product6,
     product7,
   ];
@@ -123,7 +125,7 @@ function HomePage() {
           Featured Products
         </p>
 
-        <h2 className="mb-2 mt-2 text-2xl font-bold text-[#252B42]">
+        <h2 className="mb-2 mt-2 max-w-[220px] text-center text-2xl font-bold leading-tight text-[#252B42]">
           BESTSELLER PRODUCTS
         </h2>
 
