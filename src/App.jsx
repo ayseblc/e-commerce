@@ -4,7 +4,7 @@ import Footer from "./layout/Footer";
 
 function App() {
   return (
-    <div className="mx-auto w-full max-w-[414px]">
+    <div className="mx-auto flex w-full max-w-[414px] flex-col">
       <Header />
       <PageContent />
       <Footer />
