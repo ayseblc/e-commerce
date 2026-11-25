@@ -1,5 +1,7 @@
+
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ProductCard from "../components/ProductCard";
+import Slider from "../components/Slider";
 
 import heroImage from "../assets/product-slide-1.jpg";
 import heroBackground from "../assets/product-slide-1-2.jpg";
@@ -25,6 +27,25 @@ import contentImage2 from "../assets/unsplash_CuEvrPd3NYc.png";
 import contentImage3 from "../assets/unsplash_k0rVudBoB4c.png";
 
 function HomePage() {
+  const heroSlides = [
+    {
+      image: heroImage,
+      title: "NEW COLLECTION",
+      subtitle: "SUMMER 2020",
+      description:
+        "We know how large objects will act, but things on a small scale.",
+      buttonText: "SHOP NOW",
+    },
+    {
+      image: heroBackground,
+      title: "VITA CLASSIC",
+      subtitle: "SUMMER COLLECTION",
+      description:
+        "We know how large objects will act, but things on a small scale.",
+      buttonText: "SHOP NOW",
+    },
+  ];
+
   const categories = [
     { title: "MEN", image: menImage, height: "h-[500px]" },
     { title: "WOMEN", image: womenImage, height: "h-[500px]" },
@@ -61,7 +82,6 @@ function HomePage() {
   function ContentCard({ card }) {
     return (
       <article className="flex w-full flex-col bg-white shadow-md">
-        {/* IMAGE */}
         <div className="relative h-[320px] w-full overflow-hidden">
           <img
             src={card.image}
@@ -74,27 +94,22 @@ function HomePage() {
           </span>
         </div>
 
-        {/* CONTENT */}
         <div className="relative z-10 -mt-4 flex min-h-[380px] w-full flex-col gap-4 px-5 py-6">
-          {/* TAGS */}
           <div className="flex flex-wrap items-center gap-3 text-xs">
             <span className="text-[#8EC2F2]">Google</span>
             <span className="text-[#737373]">Trending</span>
             <span className="text-[#737373]">New</span>
           </div>
 
-          {/* TITLE */}
           <h3 className="text-base font-bold leading-6 text-[#252B42]">
             {card.title}
           </h3>
 
-          {/* DESCRIPTION */}
           <p className="text-sm leading-5 text-[#737373]">
             We focus on ergonomics and meeting you where you work.
             It's only a keystroke away.
           </p>
 
-          {/* DATE AND COMMENTS */}
           <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-[#737373]">
             <span className="flex items-center gap-1">
               <span className="text-[#23A6F0]">◷</span>
@@ -107,7 +122,6 @@ function HomePage() {
             </span>
           </div>
 
-          {/* LEARN MORE */}
           <button className="mt-auto flex items-center gap-2 pt-2 text-sm font-bold text-[#737373]">
             Learn More
             <ChevronRight size={16} className="text-[#23A6F0]" />
@@ -119,48 +133,11 @@ function HomePage() {
 
   return (
     <div className="flex w-full flex-col bg-white">
-      {/* HERO */}
-      <section className="relative flex w-full flex-col items-center justify-center overflow-hidden bg-white">
-        <img
-          src={heroImage}
-          alt="Summer collection"
-          className="block h-auto w-full object-contain object-center"
-        />
-
-        <button
-          aria-label="Previous slide"
-          className="absolute left-2 top-1/2 z-20 -translate-y-1/2 text-white"
-        >
-          <ChevronLeft size={36} />
-        </button>
-
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-5 px-8 text-center">
-          <p className="text-sm font-bold text-white">SUMMER 2020</p>
-
-          <h1 className="text-4xl font-bold text-white">
-            NEW COLLECTION
-          </h1>
-
-          <p className="text-base text-white">
-            We know how large objects will act,
-            but things on a small scale.
-          </p>
-
-          <button className="rounded-md bg-[#2DC071] px-8 py-3 text-sm font-bold text-white">
-            SHOP NOW
-          </button>
-        </div>
-
-        <button
-          aria-label="Next slide"
-          className="absolute right-2 top-1/2 z-20 -translate-y-1/2 text-white"
-        >
-          <ChevronRight size={36} />
-        </button>
-      </section>
+      {/* HERO SLIDER */}
+      <Slider slides={heroSlides} />
 
       {/* EDITOR'S PICK */}
-      <section className="flex flex-col items-center gap-6 bg-[#FAFAFA] px-4 py-12">
+      <section className="flex flex-col items-center gap-6 bg-[#FAFAFA] px-4 pt-6 pb-12">
         <h2 className="text-2xl font-bold text-[#252B42]">
           EDITOR'S PICK
         </h2>
@@ -271,7 +248,7 @@ function HomePage() {
         />
       </section>
 
-     
+      {/* NEURAL UNIVERSE */}
       <section className="flex w-full flex-col items-center overflow-hidden bg-white pt-16">
         <div className="flex w-full flex-col items-center px-6 text-center">
           <p className="text-sm font-bold text-[#BDBDBD]">
@@ -312,10 +289,8 @@ function HomePage() {
 
       {/* FEATURED POSTS */}
       <section className="relative flex w-full flex-col items-center overflow-hidden bg-white">
-        {/* GRADIENT BACKGROUND */}
         <div className="absolute left-0 top-0 h-[1450px] w-full bg-gradient-to-b from-[#7B1737] via-[#66305F] to-[#252B42]" />
 
-        {/* HEADER */}
         <div className="relative z-10 flex w-full flex-col items-center px-4 pt-16 text-center">
           <p className="text-sm font-bold text-[#23A6F0]">
             Practice Advice
@@ -332,13 +307,11 @@ function HomePage() {
           </p>
         </div>
 
-        
         <div className="relative z-10 flex w-full flex-col gap-8 px-4 pb-12 pt-10">
           <ContentCard card={contentCards[0]} />
           <ContentCard card={contentCards[1]} />
         </div>
 
-      
         <div className="relative z-10 flex w-full flex-col bg-white px-4 pb-12 pt-8">
           <ContentCard card={contentCards[2]} />
         </div>
