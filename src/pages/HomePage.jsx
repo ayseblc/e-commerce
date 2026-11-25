@@ -221,13 +221,14 @@ function HomePage() {
           Problems trying to resolve the conflict between
         </p>
 
-        <div className="flex w-full flex-wrap justify-center gap-x-6 gap-y-8 lg:max-w-[1050px] lg:gap-y-12">
+        <div className="flex w-full flex-col gap-8 md:grid md:grid-cols-2 lg:flex lg:max-w-[1050px] lg:flex-row lg:flex-wrap lg:justify-center lg:gap-x-6 lg:gap-y-12">
           {products.map((image, index) => (
             <div
               key={index}
-              className="w-full sm:w-1/2 lg:w-[calc(25%-18px)]"
+              className="w-full lg:w-[calc(25%-18px)]"
             >
               <ProductCard
+                productId={index + 1}
                 image={image}
                 title="Graphic Design"
                 category="English Department"
@@ -387,11 +388,11 @@ function HomePage() {
           </p>
         </div>
 
-        <div className="mt-10 flex w-full flex-wrap justify-center gap-8 lg:max-w-[1050px] lg:gap-6">
+        <div className="mt-10 flex w-full flex-col gap-8 md:grid md:grid-cols-2 lg:flex lg:max-w-[1050px] lg:flex-row lg:gap-6">
           {contentCards.map((card, index) => (
             <div
               key={index}
-              className="w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-16px)]"
+              className="w-full lg:w-1/3"
             >
               <ContentCard card={card} />
             </div>
