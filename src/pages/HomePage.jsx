@@ -1,5 +1,9 @@
 
+import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import "swiper/css";
+
 import ProductCard from "../components/ProductCard";
 import Slider from "../components/Slider";
 
@@ -27,6 +31,9 @@ import contentImage2 from "../assets/unsplash_CuEvrPd3NYc.png";
 import contentImage3 from "../assets/unsplash_k0rVudBoB4c.png";
 
 function HomePage() {
+  const [vitaSwiper, setVitaSwiper] = useState(null);
+  const [vitaSlide, setVitaSlide] = useState(0);
+
   const heroSlides = [
     {
       image: heroImage,
@@ -44,13 +51,6 @@ function HomePage() {
         "We know how large objects will act, but things on a small scale.",
       buttonText: "SHOP NOW",
     },
-  ];
-
-  const categories = [
-    { title: "MEN", image: menImage, height: "h-[500px]" },
-    { title: "WOMEN", image: womenImage, height: "h-[500px]" },
-    { title: "ACCESSORIES", image: accessoriesImage, height: "h-[242px]" },
-    { title: "KIDS", image: kidsImage, height: "h-[242px]" },
   ];
 
   const products = [
@@ -81,8 +81,8 @@ function HomePage() {
 
   function ContentCard({ card }) {
     return (
-      <article className="flex w-full flex-col bg-white shadow-md">
-        <div className="relative h-[320px] w-full overflow-hidden">
+      <article className="flex w-full flex-col overflow-hidden bg-white shadow-md">
+        <div className="relative h-[220px] w-full overflow-hidden md:h-[180px] lg:h-[200px]">
           <img
             src={card.image}
             alt={card.title}
@@ -94,7 +94,7 @@ function HomePage() {
           </span>
         </div>
 
-        <div className="relative z-10 -mt-4 flex min-h-[380px] w-full flex-col gap-4 px-5 py-6">
+        <div className="flex min-h-[260px] w-full flex-col gap-4 px-5 py-6">
           <div className="flex flex-wrap items-center gap-3 text-xs">
             <span className="text-[#8EC2F2]">Google</span>
             <span className="text-[#737373]">Trending</span>
@@ -111,15 +111,8 @@ function HomePage() {
           </p>
 
           <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-[#737373]">
-            <span className="flex items-center gap-1">
-              <span className="text-[#23A6F0]">◷</span>
-              22 April 2021
-            </span>
-
-            <span className="flex items-center gap-1">
-              <span className="text-[#23856D]">▣</span>
-              10 comments
-            </span>
+            <span>◷ 22 April 2021</span>
+            <span>▣ 10 comments</span>
           </div>
 
           <button className="mt-auto flex items-center gap-2 pt-2 text-sm font-bold text-[#737373]">
@@ -132,49 +125,95 @@ function HomePage() {
   }
 
   return (
-    <div className="flex w-full flex-col bg-white">
+    <main className="flex w-full flex-col bg-white">
+
       {/* HERO SLIDER */}
       <Slider slides={heroSlides} />
 
       {/* EDITOR'S PICK */}
-      <section className="flex flex-col items-center gap-6 bg-[#FAFAFA] px-4 pt-6 pb-12">
-        <h2 className="text-2xl font-bold text-[#252B42]">
-          EDITOR'S PICK
-        </h2>
+      <section className="flex w-full flex-col items-center gap-6 bg-[#FAFAFA] px-4 py-12 md:px-8 lg:px-16 lg:py-16">
+        <div className="flex flex-col items-center gap-3 text-center">
+          <h2 className="text-2xl font-bold text-[#252B42]">
+            EDITOR'S PICK
+          </h2>
 
-        <p className="text-center text-sm text-[#737373]">
-          Problems trying to resolve the conflict between
-        </p>
+          <p className="text-sm text-[#737373]">
+            Problems trying to resolve the conflict between
+          </p>
+        </div>
 
-        <div className="flex w-full flex-col gap-4">
-          {categories.map((category) => (
-            <div
-              key={category.title}
-              className={`relative w-full ${category.height} overflow-hidden`}
-            >
+        <div className="flex w-full flex-col gap-4 md:h-[500px] md:flex-row md:gap-4 lg:max-w-[1050px]">
+
+          {/* MEN */}
+          <div className="relative h-[500px] w-full overflow-hidden md:w-[50%]">
+            <img
+              src={menImage}
+              alt="Men"
+              className="h-full w-full object-cover"
+            />
+
+            <div className="absolute bottom-4 left-4 bg-white px-8 py-3">
+              <span className="text-sm font-bold text-[#252B42]">
+                MEN
+              </span>
+            </div>
+          </div>
+
+          {/* WOMEN */}
+          <div className="relative h-[500px] w-full overflow-hidden md:w-[25%]">
+            <img
+              src={womenImage}
+              alt="Women"
+              className="h-full w-full object-cover"
+            />
+
+            <div className="absolute bottom-4 left-4 bg-white px-8 py-3">
+              <span className="text-sm font-bold text-[#252B42]">
+                WOMEN
+              </span>
+            </div>
+          </div>
+
+          {/* ACCESSORIES AND KIDS */}
+          <div className="flex w-full flex-col gap-4 md:w-[25%]">
+            <div className="relative h-[242px] w-full overflow-hidden">
               <img
-                src={category.image}
-                alt={category.title}
+                src={accessoriesImage}
+                alt="Accessories"
+                className="h-full w-full object-cover"
+              />
+
+              <div className="absolute bottom-4 left-4 bg-white px-5 py-3">
+                <span className="text-sm font-bold text-[#252B42]">
+                  ACCESSORIES
+                </span>
+              </div>
+            </div>
+
+            <div className="relative h-[242px] w-full overflow-hidden">
+              <img
+                src={kidsImage}
+                alt="Kids"
                 className="h-full w-full object-cover"
               />
 
               <div className="absolute bottom-4 left-4 bg-white px-8 py-3">
                 <span className="text-sm font-bold text-[#252B42]">
-                  {category.title}
+                  KIDS
                 </span>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </section>
 
       {/* BESTSELLER PRODUCTS */}
-      <section className="flex flex-col items-center px-4 py-12">
+      <section className="flex w-full flex-col items-center px-4 py-12 md:px-8 lg:px-16 lg:py-16">
         <p className="text-sm font-bold text-[#737373]">
           Featured Products
         </p>
 
-        <h2 className="mb-2 mt-2 max-w-[220px] text-center text-2xl font-bold leading-tight text-[#252B42]">
+        <h2 className="mb-2 mt-2 text-center text-2xl font-bold text-[#252B42]">
           BESTSELLER PRODUCTS
         </h2>
 
@@ -182,141 +221,185 @@ function HomePage() {
           Problems trying to resolve the conflict between
         </p>
 
-        <div className="flex w-full flex-col gap-6">
+        <div className="flex w-full flex-wrap justify-center gap-x-6 gap-y-8 lg:max-w-[1050px] lg:gap-y-12">
           {products.map((image, index) => (
-            <ProductCard
+            <div
               key={index}
-              image={image}
-              title="Graphic Design"
-              category="English Department"
-              oldPrice="$16.48"
-              price="$6.48"
+              className="w-full sm:w-1/2 lg:w-[calc(25%-18px)]"
+            >
+              <ProductCard
+                image={image}
+                title="Graphic Design"
+                category="English Department"
+                oldPrice="$16.48"
+                price="$6.48"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* VITA CLASSIC SLIDER */}
+      <section className="relative w-full overflow-hidden bg-[#23856D]">
+
+        <Swiper
+          onSwiper={setVitaSwiper}
+          onSlideChange={(swiper) => setVitaSlide(swiper.realIndex)}
+          slidesPerView={1}
+          loop={true}
+          className="w-full"
+        >
+          {[1, 2].map((slide) => (
+            <SwiperSlide key={slide}>
+              <div className="relative flex min-h-[650px] w-full flex-col items-center overflow-hidden md:min-h-[500px] md:flex-row md:justify-between">
+
+                {/* BACKGROUND */}
+                <img
+                  src={heroBackground}
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+
+                {/* TEXT CONTENT */}
+                <div className="relative z-10 flex w-full flex-col items-center px-8 py-12 text-center md:w-1/2 md:items-start md:pl-16 md:text-left lg:pl-24">
+                  <p className="text-xs font-bold text-white">
+                    SUMMER 2020
+                  </p>
+
+                  <h2 className="mt-6 text-3xl font-bold text-white lg:text-4xl">
+                    Vita Classic
+                    <br />
+                    Product
+                  </h2>
+
+                  <p className="mt-5 max-w-[300px] text-sm leading-6 text-white">
+                    We know how large objects will act, but things on a small scale.
+                  </p>
+
+                  <div className="mt-6 flex items-center gap-6">
+                    <span className="text-base font-bold text-white">
+                      $16.48
+                    </span>
+
+                    <button className="h-[48px] bg-[#2DC071] px-6 text-xs font-bold text-white">
+                      ADD TO CART
+                    </button>
+                  </div>
+                </div>
+
+                {/* MODEL */}
+                <div className="relative z-10 flex h-[350px] w-full items-end justify-center md:h-[500px] md:w-1/2">
+                  <img
+                    src={heroModel}
+                    alt="Vita Classic model"
+                    className="h-full max-w-full object-contain object-bottom"
+                  />
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* PREVIOUS ARROW */}
+        <button
+          onClick={() => vitaSwiper?.slidePrev()}
+          aria-label="Previous Vita slide"
+          className="absolute left-3 top-1/2 z-20 -translate-y-1/2 text-white md:left-8"
+        >
+          <ChevronLeft size={36} />
+        </button>
+
+        {/* NEXT ARROW */}
+        <button
+          onClick={() => vitaSwiper?.slideNext()}
+          aria-label="Next Vita slide"
+          className="absolute right-3 top-1/2 z-20 -translate-y-1/2 text-white md:right-8"
+        >
+          <ChevronRight size={36} />
+        </button>
+
+        {/* PROGRESS INDICATOR */}
+        <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+          {[0, 1].map((index) => (
+            <button
+              key={index}
+              onClick={() => vitaSwiper?.slideToLoop(index)}
+              aria-label={`Go to Vita slide ${index + 1}`}
+              className={`h-2.5 w-8 rounded-full transition-colors ${
+                vitaSlide === index
+                  ? "bg-white"
+                  : "bg-white/40"
+              }`}
             />
           ))}
         </div>
       </section>
 
-      {/* VITA CLASSIC */}
-      <section
-        className="relative flex h-[1300px] w-full flex-col items-center overflow-hidden"
-        style={{
-          backgroundImage: `url("${heroBackground}")`,
-          backgroundSize: "100% 100%",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div className="relative z-10 flex w-full flex-col items-center px-8 pt-[90px] text-center">
-          <p className="text-xs font-bold text-white">
-            SUMMER 2020
-          </p>
-
-          <h2 className="mt-6 text-[24px] font-bold leading-[30px] text-white">
-            Vita Classic
-            <br />
-            Product
-          </h2>
-
-          <p className="mt-5 max-w-[220px] text-sm leading-5 text-white">
-            We know how large objects will act,
-            but things on a small scale.
-          </p>
-
-          <p className="mt-6 text-base font-bold text-white">
-            $16.48
-          </p>
-
-          <div className="mt-4 flex w-full items-center justify-between px-1">
-            <button aria-label="Previous slide" className="text-white">
-              <ChevronLeft size={30} />
-            </button>
-
-            <button className="h-[52px] bg-[#2DC071] px-5 text-xs font-bold text-white">
-              ADD TO CART
-            </button>
-
-            <button aria-label="Next slide" className="text-white">
-              <ChevronRight size={30} />
-            </button>
-          </div>
-        </div>
-
-        <img
-          src={heroModel}
-          alt="Vita Classic model"
-          className="absolute bottom-0 left-0 h-[600px] w-full object-contain object-bottom"
-        />
-      </section>
-
-      {/* NEURAL UNIVERSE */}
-      <section className="flex w-full flex-col items-center overflow-hidden bg-white pt-16">
-        <div className="flex w-full flex-col items-center px-6 text-center">
+      {/* PART OF THE NEURAL UNIVERSE */}
+      <section className="flex w-full flex-col items-center gap-8 overflow-hidden bg-white px-6 py-16 md:flex-row md:justify-center md:gap-12 md:px-12 lg:gap-20 lg:px-20 lg:py-24">
+        <div className="flex w-full flex-col items-center text-center md:w-1/2 md:items-start md:text-left">
           <p className="text-sm font-bold text-[#BDBDBD]">
             SUMMER 2020
           </p>
 
-          <h2 className="mt-5 max-w-[310px] text-[40px] font-bold leading-[1.25] text-[#252B42]">
-            Part of the
-            <br />
-            Neural
-            <br />
-            Universe
+          <h2 className="mt-5 text-3xl font-bold leading-tight text-[#252B42] lg:text-4xl">
+            Part of the Neural Universe
           </h2>
 
-          <p className="mt-4 max-w-[270px] text-xl leading-[30px] text-[#737373]">
+          <p className="mt-4 max-w-[400px] text-base leading-7 text-[#737373]">
             We know how large objects will act, but things on a small scale.
           </p>
 
-          <div className="mt-5 flex flex-col items-center gap-[10px]">
-            <button className="h-[52px] w-[156px] bg-[#23A6F0] text-sm font-bold text-white">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <button className="h-[48px] w-[156px] bg-[#23A6F0] text-sm font-bold text-white">
               BUY NOW
             </button>
 
-            <button className="h-[52px] w-[165px] border border-[#23A6F0] bg-white text-sm font-bold text-[#23A6F0]">
+            <button className="h-[48px] w-[165px] border border-[#23A6F0] bg-white text-sm font-bold text-[#23A6F0]">
               Learn More
             </button>
           </div>
         </div>
 
-        <div className="mt-5 w-full overflow-hidden">
+        <div className="flex w-full justify-center md:w-1/2">
           <img
             src={coupleImage}
             alt="Couple wearing winter clothes"
-            className="relative left-[-25px] block h-[403px] w-[463px] max-w-none object-contain"
+            className="h-auto w-full max-w-[500px] object-contain"
           />
         </div>
       </section>
 
       {/* FEATURED POSTS */}
-      <section className="relative flex w-full flex-col items-center overflow-hidden bg-white">
-        <div className="absolute left-0 top-0 h-[1450px] w-full bg-gradient-to-b from-[#7B1737] via-[#66305F] to-[#252B42]" />
-
-        <div className="relative z-10 flex w-full flex-col items-center px-4 pt-16 text-center">
+      <section className="flex w-full flex-col items-center bg-white px-4 py-16 md:px-8 lg:px-16">
+        <div className="flex w-full flex-col items-center text-center">
           <p className="text-sm font-bold text-[#23A6F0]">
             Practice Advice
           </p>
 
-          <h2 className="mt-4 text-[40px] font-bold leading-tight text-[#252B42]">
-            Featured
-            <br />
-            Products
+          <h2 className="mt-4 text-3xl font-bold text-[#252B42] lg:text-4xl">
+            Featured Posts
           </h2>
 
-          <p className="mt-4 max-w-[280px] text-sm leading-5 text-[#737373]">
-            Problems trying to resolve the conflict between the two major realms of Classical physics.
+          <p className="mt-4 max-w-[450px] text-sm leading-5 text-[#737373]">
+            Problems trying to resolve the conflict between the two major realms
+            of Classical physics.
           </p>
         </div>
 
-        <div className="relative z-10 flex w-full flex-col gap-8 px-4 pb-12 pt-10">
-          <ContentCard card={contentCards[0]} />
-          <ContentCard card={contentCards[1]} />
-        </div>
-
-        <div className="relative z-10 flex w-full flex-col bg-white px-4 pb-12 pt-8">
-          <ContentCard card={contentCards[2]} />
+        <div className="mt-10 flex w-full flex-wrap justify-center gap-8 lg:max-w-[1050px] lg:gap-6">
+          {contentCards.map((card, index) => (
+            <div
+              key={index}
+              className="w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-16px)]"
+            >
+              <ContentCard card={card} />
+            </div>
+          ))}
         </div>
       </section>
-    </div>
+
+    </main>
   );
 }
 
